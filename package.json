@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@tendermint/amino-js": "github:hschoenburg/amino-js#extend",
+    "cosmos-sdk": "^1.5.1",
     "lodash": "^4.17.15"
   }
 }

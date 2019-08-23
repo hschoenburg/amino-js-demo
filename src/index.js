@@ -1,12 +1,35 @@
 import _ from 'lodash';
-import {encodeString, decodeString } from '@tendermint/amino-js'
-import { marshalTx, unmarshalTx } from '@tendermint/amino-js';
+import {encodeString, decodeString } from 'hschoenburg/amino-js'
+import { marshalTx, unmarshalTx } from 'hschoenburg/amino-js';
+import { Client } from 'cosmos-sdk'
+let client = require('cosmos-sdk')('http://localhost:26657')
+
+
+
+//let node  = Client('http://localhost:26657')
+
+async function GetStatus() {
+
+  let fetchAccount = await node.req('GET', '/status')
+
+  console.log(fetchAccount)
+
+  return fetchAccount
+}
+
+
+
+/*
+ * ideas for helloweb
+ * send RPC query for QueryListGreetings
+ * Sign and send Tx with MsgGreet
+ */
 
 const tx = {
    'type':  'auth/StdTx',
    'value': {
        'msg':        [{
-           'type':  'hellochain/Greeting',
+           'type':  'hellochain/MsgGreet',
            'value': {
                'sender': 'cosmos1h806c7khnvmjlywdrkdgk2vrayy2mmvf9rxk2r',
                'recipient':   'cosmos1z7g5w84ynmjyg0kqpahdjqpj7yq34v3suckp0e',
@@ -46,4 +69,6 @@ function component() {
 }
 
 document.body.appendChild(component());
+
+GetStatus()
 
