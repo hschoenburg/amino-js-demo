@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "git@github.com:hschoenburg/amino-js-demo.git",
   "author": "hschoenburg <hschoenburg@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@tendermint/amino-js": "hschoenburg/amino-js#extend",
+    "lodash": "^4.17.15"
+  }
 }

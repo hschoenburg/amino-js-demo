@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import {encodeString, decodeString } from 'hschoenburg/amino-js'
-import { marshalTx, unmarshalTx } from 'hschoenburg/amino-js';
-import { Client } from 'cosmos-sdk'
-let client = require('cosmos-sdk')('http://localhost:26657')
+import {encodeString, decodeString } from '@tendermint/amino-js'
+import { marshalTx, unmarshalTx } from '@tendermint/amino-js';
+//import { Client } from 'cosmos-sdk'
+//let client = require('cosmos-sdk')('http://localhost:26657')
 
 
 
@@ -69,5 +69,5 @@ function component() {
 
 document.body.appendChild(component());
 
-GetStatus()
+//GetStatus()
 
