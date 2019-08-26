@@ -18,11 +18,10 @@ async function GetStatus() {
 }
 
 
-
 /*
  * ideas for helloweb
- * send RPC query for QueryListGreetings
  * Sign and send Tx with MsgGreet
+ * send RPC query for QueryListGreetings
  */
 
 const tx = {
