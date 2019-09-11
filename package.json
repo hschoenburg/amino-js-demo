@@ -6,10 +6,12 @@
   "author": "hans@tendermint.com",
   "license": "MIT",
   "dependencies": {
+    "@tendermint/amino-js": "hschoenburg/amino-js#extend",
     "amino-js": "hschoenburg/amino-js",
-    "js-cosmos-wallet": "okwme/js-cosmos-wallet"
+    "js-cosmos-wallet": "^0.0.4"
   },
   "devDependencies": {
+    "lodash": "^4.17.15",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"
   }
