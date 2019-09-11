@@ -1,11 +1,9 @@
 import _ from 'lodash';
 import {encodeString, decodeString } from '@tendermint/amino-js'
 import { marshalTx, unmarshalTx } from '@tendermint/amino-js';
+
 //import { Client } from 'cosmos-sdk'
 //let client = require('cosmos-sdk')('http://localhost:26657')
-
-
-
 //let node  = Client('http://localhost:26657')
 
 async function GetStatus() {
@@ -17,22 +15,15 @@ async function GetStatus() {
   return fetchAccount
 }
 
-
-/*
- * ideas for helloweb
- * Sign and send Tx with MsgGreet
- * send RPC query for QueryListGreetings
- */
-
 const tx = {
    'type':  'auth/StdTx',
    'value': {
        'msg':        [{
            'type':  'hellochain/MsgGreet',
            'value': {
-               'sender': 'cosmos1h806c7khnvmjlywdrkdgk2vrayy2mmvf9rxk2r',
-               'recipient':   'cosmos1z7g5w84ynmjyg0kqpahdjqpj7yq34v3suckp0e',
-               'body':    'Greetings Earthling'
+               'Sender': 'cosmos1h806c7khnvmjlywdrkdgk2vrayy2mmvf9rxk2r',
+               'Recipient':   'cosmos1z7g5w84ynmjyg0kqpahdjqpj7yq34v3suckp0e',
+               'Body':    'Greetings Earthling'
            }
        }],
        'fee':        {
@@ -53,21 +44,30 @@ const tx = {
    }
 };
 
-const encodedTx = marshalTx(tx);
-const decodedTx = unmarshalTx(encodedTx);
+function encodedTx() {
+  const encodedTx = marshalTx(tx);
+  const decodedTx = unmarshalTx(encodedTx);
+  const second = document.createElement('p');
+
+  second.innerHTML = JSON.stringify(decodedTx.value.msg[0].value.Body)
+
+  return second
+}
 
 function component() {
   const element = document.createElement('div');
 
-  var encoded = decodeString(encodeString("Hey there Amino Decoded"))
-  console.log(encoded)
+  var encoded = decodeString(encodeString("Hey there Amino Decoded String here."))
 
-  element.innerHTML = encodedTx
+  element.innerHTML = encoded[0] 
 
   return element;
 }
 
-document.body.appendChild(component());
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.appendChild(component());
+  document.body.appendChild(encodedTx());
+})
 
-//GetStatus()
+
 
