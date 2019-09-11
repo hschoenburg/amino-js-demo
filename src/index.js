@@ -2,18 +2,18 @@ import _ from 'lodash';
 import {encodeString, decodeString } from '@tendermint/amino-js'
 import { marshalTx, unmarshalTx } from '@tendermint/amino-js';
 
-//import { Client } from 'cosmos-sdk'
-//let client = require('cosmos-sdk')('http://localhost:26657')
-//let node  = Client('http://localhost:26657')
+import {
+  // createCosmosAddress,
+  sign,
+  // createSignature,
+  // createSignMessage,
+  generateWalletFromSeed,
+  // generateSeed,
+  // generateWallet,
+  createSignedTx
+  // createBroadcastBody
+} from "js-cosmos-wallet";
 
-async function GetStatus() {
-
-  let fetchAccount = await node.req('GET', '/status')
-
-  console.log(fetchAccount)
-
-  return fetchAccount
-}
 
 const tx = {
    'type':  'auth/StdTx',
@@ -26,21 +26,21 @@ const tx = {
                'Body':    'Greetings Earthling'
            }
        }],
-       'fee':        {
-           'amount': [{
-               'denom':  'uatom',
-               'amount': '5000'
+       "fee":        {
+           "amount": [{
+               "denom":  "uatom",
+               "amount": "5000"
            }],
-           'gas':    '200000'
+           "gas":    "200000"
        },
-       'signatures': [{
-           'pub_key':   {
-               'type':  'tendermint/PubKeySecp256k1',
-               'value': 'AtQaCqFnshaZQp6rIkvAPyzThvCvXSDO+9AzbxVErqJP'
+       "signatures": [{
+           "pub_key":   {
+               "type":  "tendermint/PubKeySecp256k1",
+               "value": "AtQaCqFnshaZQp6rIkvAPyzThvCvXSDO+9AzbxVErqJP"
            },
-           'signature': '1nUcIH0CLT0/nQ0mBTDrT6kMG20NY/PsH7P2gc4bpYNGLEYjBmdWevXUJouSE/9A/60QG9cYeqyTe5kFDeIPxQ=='
+           "signature": "1nUcIH0CLT0/nQ0mBTDrT6kMG20NY/PsH7P2gc4bpYNGLEYjBmdWevXUJouSE/9A/60QG9cYeqyTe5kFDeIPxQ=="
        }],
-       'memo':       '1122672754'
+       "memo":       "1122672754"
    }
 };
 
@@ -54,20 +54,27 @@ function encodedTx() {
   return second
 }
 
-function component() {
-  const element = document.createElement('div');
-
-  var encoded = decodeString(encodeString("Hey there Amino Decoded String here."))
-
-  element.innerHTML = encoded[0] 
-
-  return element;
+function button(callback, text) {
+  console.log("hello from button")
+  const box = document.createElement("div");
+  const label = document.createElement("p");
+  label.innerHTML = text
+  const button = document.createElement("input")
+  button.setAttribute("type", "submit")
+  button.addEventListener("click", callback)
+  box.appendChild(label)
+  box.appendChild(button)
+  return box
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
-  document.body.appendChild(component());
-  document.body.appendChild(encodedTx());
+
+  let copy = "here is the first buttonreally "
+  let callback = function() {
+    console.log("button clicked")
+  }
+  document.body.appendChild(button(callback, copy))
+
 })
-
-
 

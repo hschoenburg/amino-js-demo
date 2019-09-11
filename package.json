@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:hschoenburg/amino-js-demo.git",
-  "author": "hschoenburg <hschoenburg@gmail.com>",
+  "author": "hans@tendermint.com",
   "license": "MIT",
   "dependencies": {
-    "@tendermint/amino-js": "hschoenburg/amino-js#extend",
-    "lodash": "^4.17.15"
+    "amino-js": "hschoenburg/amino-js",
+    "js-cosmos-wallet": "okwme/js-cosmos-wallet"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
   }
 }
