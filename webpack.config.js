@@ -7,6 +7,7 @@ module.exports = {
       filename: 'main.js',
       path: path.resolve(__dirname, 'dist')
     },
+  node: { Buffer: true },
   resolve: {
           // options for resolving module requests
           // (does not apply to resolving to loaders)

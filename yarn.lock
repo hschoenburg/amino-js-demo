@@ -4,7 +4,7 @@
 
 "@tendermint/amino-js@hschoenburg/amino-js#extend":
   version "0.4.4"
-  resolved "https://codeload.github.com/hschoenburg/amino-js/tar.gz/9ebbc1ce8a5a78404b98d4901b4f5cb9f812985f"
+  resolved "https://codeload.github.com/hschoenburg/amino-js/tar.gz/a75b707298e2c5c0aaf8146b452379c44252bc74"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -191,10 +191,6 @@ ajv@^6.1.0, ajv@^6.10.2:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
-
-amino-js@hschoenburg/amino-js:
-  version "0.4.4"
-  resolved "https://codeload.github.com/hschoenburg/amino-js/tar.gz/e9efd5eba1f0c81a3533b26c8635956e01142d95"
 
 ansi-regex@^2.0.0:
   version "2.1.1"

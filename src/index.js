@@ -1,10 +1,15 @@
 /*
- * ok lets spec out this app. It should work for hellochain first
- * Create an account
- * So Send Greetings to an address
- * List all greetings for an address
+ * ok lets spec out this app. It should work for nameservice
+ * Create a Wallet
+ * Query Your Wallet Balance
+ * Receive coins to this account
+ e Buy a name -> with proof
+ *
+ * Query your names 
+ * Update Your name
  */
 
+import NameServiceClient from "./client.js"
 
 import axios from "axios"
 import _ from 'lodash';
@@ -27,19 +32,12 @@ import {
 let wallet = {}
 
 
-function BuildGreetingTx(params) {
-
+function BuildStdTx(msgs) {
   const tx = {
      'type':  'auth/StdTx',
      'value': {
-         'msg':        [{
-             'type':  'hellochain/MsgGreet',
-             'value': {
-                 'Sender': params.Sender,
-                 'Recipient': params.Recipient,
-                 'Body': params.Body
-             }
-         }],
+       'msg': msgs,
+         
          "fee":        {
              "amount": [{
                  "denom":  "stake",
@@ -75,6 +73,9 @@ function generateWallet(e) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  const client = new NameServiceClient(1,2)
+  client.PrintStuff("hello from client")
 
   document.getElementById("GenerateWallet").addEventListener('click', generateWallet)
 
