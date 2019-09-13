@@ -5,13 +5,25 @@
   "repository": "git@github.com:hschoenburg/amino-js-demo.git",
   "author": "hans@tendermint.com",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --output-public-path=/build/"
+  },
   "dependencies": {
     "@tendermint/amino-js": "hschoenburg/amino-js#extend",
     "amino-js": "hschoenburg/amino-js",
     "axios": "^0.19.0",
+    "babel-loader": "^8.0.6",
     "js-cosmos-wallet": "^0.0.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "lodash": "^4.17.15",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"

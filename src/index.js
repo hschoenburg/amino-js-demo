@@ -4,9 +4,11 @@
  * Query Your Wallet Balance
  * Receive coins to this account
  e Buy a name -> with proof
+ 
  *
  * Query your names 
  * Update Your name
+ * Send coins to address
  */
 
 import NameServiceClient from "./client.js"
@@ -71,36 +73,39 @@ function generateWallet(e) {
 
 }
 
+function submitGreeter(e) {
+			e.preventDefault()
+			let elements = GreeterForm.elements
+
+			let txParams = {
+				Sender: wallet.cosmosAddress,
+				Recipient:  elements[1].value,
+				Body: elements[0].value
+			}
+
+			let unsignedTx = BuildGreetingTx(txParams)
+			console.log(unsignedTx)
+			let signedTx = sign(unsignedTx, wallet)
+
+			console.log(signedTx)
+}
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  const client = new NameServiceClient(1,2)
-  client.PrintStuff("hello from client")
+	(async () => {
 
-  document.getElementById("GenerateWallet").addEventListener('click', generateWallet)
+		const client = new NameServiceClient(1,2)
+		client.PrintStuff("hello from async! client")
 
-  const GreeterForm = document.getElementById("GreeterForm")
-  GreeterForm.addEventListener("submit", function(e) {
+		document.getElementById("GenerateWallet").addEventListener('click', generateWallet)
 
-    e.preventDefault()
-    let elements = GreeterForm.elements
-
-    let txParams = {
-      Sender: wallet.cosmosAddress,
-      Recipient:  elements[1].value,
-      Body: elements[0].value
-    }
-
-    let unsignedTx = BuildGreetingTx(txParams)
-    console.log(unsignedTx)
-    let signedTx = sign(unsignedTx, wallet)
-
-    console.log(signedTx)
-
-  })
+		const GreeterForm = document.getElementById("GreeterForm")
+		GreeterForm.addEventListener("submit", submitGreeter)
+  })()
 
 })
 
-function getMetadata (address) {
-  return axios.get("/auth/accounts/" + address)
-}

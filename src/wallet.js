@@ -14,6 +14,10 @@ export default class Wallet {
    this.address = address
   }
 
+  // given seed phrase
+  // have the user copy/paste and keep their seed phrase
+  generateFromSeed(seed) {}
+
 
   generate() {
     // create and save pubKey, privKJey and address
