@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 /*
  * ok lets spec out this app. It should work for nameservice
  * Create a Wallet
@@ -11,7 +13,7 @@
  * Send coins to address
  */
 
-import NameServiceClient from './client.js'
+import NameServiceClient from './client.ts'
 
 const client = new NameServiceClient()
 
@@ -20,34 +22,37 @@ const client = new NameServiceClient()
 
 // placeholder var for local wallet
 
-async function WhoisQueryHandler (e) {
+async function WhoisQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
-  const name = e.target.elements[0].value
+  const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
+  const name = elements[0].value
   const data = await client.QueryWhois(name)
   document.getElementById('WhoisQueryResult').innerHTML = JSON.stringify(data)
 }
-async function AccountQueryHandler (e) {
+async function AccountQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
-  const address = e.target.elements[0].value
+  //const target = e.target as HTMLFormElement
+  const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
+  const address = elements[0].value
   const data = await client.QueryAccount(address)
   document.getElementById('AccountQueryResult').innerHTML = JSON.stringify(data)
 }
 
-async function TxQueryHandler (e) {
+async function TxQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
-  const hash = e.target.elements[0].value
+  console.log('TXQUERY')
+  const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
+  const hash = elements[0].value
   const data = await client.QueryTx(hash)
   document.getElementById('TxQueryResult').innerHTML = JSON.stringify(data)
 }
 
-function RegisterFormListeners (client) {
+function RegisterFormListeners (client: NameServiceClient) {
   document.getElementById('WhoisQueryForm').addEventListener('submit', WhoisQueryHandler)
   document.getElementById('AccountQueryForm').addEventListener('submit', AccountQueryHandler)
   document.getElementById('TxQueryForm').addEventListener('submit', TxQueryHandler)
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  (async () => {
-    RegisterFormListeners()
-  })()
-})
+window.onload = function() {
+    RegisterFormListeners(client)
+}

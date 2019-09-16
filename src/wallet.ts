@@ -1,11 +1,17 @@
-export default class Wallet {
+import { WalletInterface }  from './types';
+
+export default class Wallet implements WalletInterface {
+    address: string = undefined
+    pubKey: any = undefined
+    privKey: any = undefined
+
   constructor () {
     this.address = undefined
     this.pubKey = undefined
     this.address = undefined
   }
 
-  BuildStdTx (msgs) {
+  BuildStdTx (msgs: Array<any>) {
     const tx = {
       type: 'auth/StdTx',
       value: {
@@ -24,7 +30,7 @@ export default class Wallet {
     return tx
   }
 
-  import (pubKey, privKey, address) {
+  import (pubKey: any, privKey: any, address: any) {
     this.pubKey = pubKey
     this.privKey = privKey,
     this.address = address
@@ -32,7 +38,7 @@ export default class Wallet {
 
   // given seed phrase
   // have the user copy/paste and keep their seed phrase
-  generateFromSeed (seed) {}
+  generateFromSeed (seed: string) {}
 
   generate () {
     // create and save pubKey, privKJey and address

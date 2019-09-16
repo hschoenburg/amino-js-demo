@@ -1,30 +1,31 @@
 import axios from 'axios'
 
 export default class NameServiceClient {
-  async QueryWhois (name) {
+
+  async QueryWhois (name: string) {
     const data = await axios.get('/nameservice/names/' + name + '/whois')
     return data.data.result
   }
 
-  async QueryAccount (address) {
+  async QueryAccount (address: any) {
     console.log('querying')
     const data = await axios.get('/auth/accounts/' + address)
     console.log(data)
     return data.data.result
   }
 
-  async QueryTx (hash) {
+  async QueryTx (hash: any) {
     const data = await axios.post('/rpc/tx?hash=' + '0x' + hash + '?prove=true')
     console.log(data)
     return data.data.result
   }
 
   // returns a promise
-  QueryResolveName (params) {}
+  QueryResolveName (name: string) {}
 
-  BuildMsgBuyName (params) {}
+  BuildMsgBuyName (params: any) {}
 
-  BuildMsgSetName (prams) {}
+  BuildMsgSetName (params: any) {}
 }
 
 // proof examples

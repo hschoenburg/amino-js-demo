@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS-Cosmos Demo</title>
+    <style>
+      .query-box {
+        border: 0.5px solid gray;
+        padding: 5px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="http://localhost:8080/main.js"></script>
+    <h1>Cosmos-JS Demo</h1>
+    <div id="WalletBox">
+      <p id="WalletBoxStatus">No Wallet</p>
+      <input type="submit" id="GenerateWallet" value="Generate Wallet" />
+      <input
+        disabled="true"
+        type="submit"
+        id="QueryAccount"
+        value="Query Account Status"
+      />
+    </div>
+    <div id="Wallet">
+      <p id="Mnemonic"></p>
+      <p id="PubKey"></p>
+      <p id="PrivKey"></p>
+      <p id="Address"></p>
+    </div>
+
+    <div class="query-box">
+      <p>
+        Use the form below to Query an Transaction Hash like this one
+        <b>5FF36B7420CE18430A2D14694FA8D591F81430CD9BE7B5596E83F555BD358B09</b>
+      </p>
+      <form id="TxQueryForm" method="POST" , action="/">
+        <label for="hash">Tx Hash</label>
+        <input name="hash" type="text" />
+        <input type="submit" />
+      </form>
+      <p id="TxQueryResult"></p>
+    </div>
+
+    <div class="query-box">
+      <p>
+        Use the form below to Query an account address like this one
+        <b>cosmos1ys94ptve4hfghgv7j40p0hxq07z090x6cta2mk</b>
+      </p>
+      <form id="AccountQueryForm" method="POST" , action="/">
+        <label for="address">Cosmos Address</label>
+        <input name="address" type="text" />
+        <input type="submit" />
+      </form>
+      <p id="AccountQueryResult"></p>
+    </div>
+
+    <div class="query-box">
+      <p>Use the form below to Query the Whois for a name</p>
+      <form id="WhoisQueryForm" method="POST" , action="/">
+        <label for="name">Name</label>
+        <input name="name" type="text" />
+        <input type="submit" />
+      </form>
+      <p id="WhoisQueryResult"></p>
+    </div>
+
+    <div class="query-box">
+      <p>Use the form below to Buy your first name!</p>
+      <form id="BuyNameForm" method="POST" , action="/">
+        <label for="name">Name</label>
+        <input name="name" type="text" />
+        <label for="coins">Coins offered (e.g 100nametoken)</label>
+        <input name="coins" type="text" />
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>
