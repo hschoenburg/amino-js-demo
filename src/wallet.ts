@@ -1,15 +1,16 @@
-import { WalletInterface }  from './types';
+import  *'    from './types';
 
 export default class Wallet implements WalletInterface {
-    address: string = undefined
+/*
+    address: string = ''
     pubKey: any = undefined
     privKey: any = undefined
 
   constructor () {
-    this.address = undefined
     this.pubKey = undefined
     this.address = undefined
   }
+  */
 
   BuildStdTx (msgs: Array<any>) {
     const tx = {
@@ -30,11 +31,13 @@ export default class Wallet implements WalletInterface {
     return tx
   }
 
+/*
   import (pubKey: any, privKey: any, address: any) {
     this.pubKey = pubKey
     this.privKey = privKey,
     this.address = address
   }
+  */
 
   // given seed phrase
   // have the user copy/paste and keep their seed phrase

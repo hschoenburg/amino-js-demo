@@ -1,4 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
+import { RPCTxQueryWithProofResponseJSON, Proof } from './types';
+
 
 export default class NameServiceClient {
 
@@ -15,9 +17,9 @@ export default class NameServiceClient {
   }
 
   async QueryTx (hash: any) {
-    const data = await axios.post('/rpc/tx?hash=' + '0x' + hash + '?prove=true')
-    console.log(data)
-    return data.data.result
+    var data:RPCTxQueryWithProofResponseJSON = await axios.post('/rpc/tx?hash=' + '0x' + hash + '&prove=true')
+    const decodedTx = this.decodeTx(data.result.tx)
+    return decodedTx
   }
 
   // returns a promise

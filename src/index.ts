@@ -27,7 +27,12 @@ async function WhoisQueryHandler (e: Event): Promise<void> {
   const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
   const name = elements[0].value
   const data = await client.QueryWhois(name)
-  document.getElementById('WhoisQueryResult').innerHTML = JSON.stringify(data)
+  let resultPrompt = document.getElementById('WhoisQueryResult')
+  if (resultPrompt) {
+    resultPrompt.innerHTML = JSON.stringify(data)
+  }
+}
+
 }
 async function AccountQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
@@ -35,22 +40,39 @@ async function AccountQueryHandler (e: Event): Promise<void> {
   const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
   const address = elements[0].value
   const data = await client.QueryAccount(address)
-  document.getElementById('AccountQueryResult').innerHTML = JSON.stringify(data)
+  let resultPrompt = document.getElementById('AccountQueryResult')
+  if (resultPrompt) {
+    resultPrompt.innerHTML = JSON.stringify(data)
+  }
 }
 
 async function TxQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
   console.log('TXQUERY')
   const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
-  const hash = elements[0].value
+  const hash = elements[0].value.trim()
+
+  console.log(hash)
   const data = await client.QueryTx(hash)
-  document.getElementById('TxQueryResult').innerHTML = JSON.stringify(data)
+  let resultPrompt = document.getElementById('TxQueryResult')
+  if (resultPrompt) {
+    resultPrompt.innerHTML = JSON.stringify(data)
+  }
 }
 
 function RegisterFormListeners (client: NameServiceClient) {
-  document.getElementById('WhoisQueryForm').addEventListener('submit', WhoisQueryHandler)
-  document.getElementById('AccountQueryForm').addEventListener('submit', AccountQueryHandler)
-  document.getElementById('TxQueryForm').addEventListener('submit', TxQueryHandler)
+  let queryForm = document.getElementById('WhoisQueryForm')
+  if(queryForm) {
+    queryForm.addEventListener('submit', WhoisQueryHandler)
+  }
+  let accountForm = document.getElementById('AccountQueryForm')
+  if(accountForm) {
+    accountForm.addEventListener('submit', AccountQueryHandler)
+  }
+  let txForm = document.getElementById('TxQueryForm')
+    if(txForm) {
+      txForm.addEventListener('submit', TxQueryHandler)
+    }
 }
 
 window.onload = function() {

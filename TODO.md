@@ -1,8 +1,7 @@
 
 
 
-- switching to typescript
-- Use types from jordansexton/sig
+- Use types from jordansexton/sig?
 
 - decode and verify tx proof
 - Msg proof?
