@@ -12,12 +12,13 @@ module.exports = {
   node: { Buffer: true },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: path.resolve(__dirname, 'src/', 'index.html'),
       inject: 'body',
       chunks: ['index'],
       filename: 'index.html'
     })
   ],
+  stats: { children: false },
   module: {
     rules: [
       {

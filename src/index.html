@@ -71,10 +71,15 @@
       <form id="BuyNameForm" method="POST" , action="/">
         <label for="name">Name</label>
         <input name="name" type="text" />
-        <label for="coins">Coins offered (e.g 100nametoken)</label>
-        <input name="coins" type="text" />
+
+        <label for="denom">Coin denomination ('stake', 'nametoken')</label>
+        <input name="denom" type="text" />
+
+        <label for="amount">amount</label>
+        <input name="amount" type="number" />
         <input type="submit" />
       </form>
+      <p id="BuyNameResult"></p>
     </div>
   </body>
 </html>

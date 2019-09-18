@@ -1,4 +1,7 @@
 import axios from 'axios'
+import * as types from './types'
+import * as utils from './utils'
+import { TrySocket } from './socket'
 
 /*
  * ok lets spec out this app. It should work for nameservice
@@ -13,14 +16,28 @@ import axios from 'axios'
  * Send coins to address
  */
 
-import NameServiceClient from './client.ts'
+import  { NameServiceClient } from './client'
 
 const client = new NameServiceClient()
+
 
 // import {encodeString, decodeString } from '@tendermint/amino-js'
 // import { marshalTx, unmarshalTx } from '@tendermint/amino-js';
 
 // placeholder var for local wallet
+
+
+async function BuyNameHandler(e: Event): Promise<void> {
+  e.preventDefault()
+  const elements = (<HTMLFormElement>e.target).elements as  HTMLCollectionOf<HTMLInputElement>
+  const name = elements[0].value
+  const denom = elements[1].value
+  const amount = elements[2].value
+  
+  const coin = { denom: denom, amount: amount }
+  const msg = utils.BuildBuyNameMsg(coin, name, "my Sdk Account Address")
+
+}
 
 async function WhoisQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
@@ -33,7 +50,6 @@ async function WhoisQueryHandler (e: Event): Promise<void> {
   }
 }
 
-}
 async function AccountQueryHandler (e: Event): Promise<void> {
   e.preventDefault()
   //const target = e.target as HTMLFormElement
@@ -77,4 +93,7 @@ function RegisterFormListeners (client: NameServiceClient) {
 
 window.onload = function() {
     RegisterFormListeners(client)
+
+  TrySocket()
 }
+
