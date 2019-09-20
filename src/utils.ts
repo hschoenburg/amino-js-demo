@@ -1,4 +1,4 @@
-import * as Amino from 'amino-js'
+import * as Amino from '@tendermint/amino-js'
 import * as cosmos from '../lib/types'
 import * as nameservice from './types'
 

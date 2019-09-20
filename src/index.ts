@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as types from './types'
-import * as utils from './utils'
+import { DecodeTx }  from './utils'
 import { TrySocket } from './socket'
 
 /*

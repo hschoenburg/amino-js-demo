@@ -17,10 +17,10 @@ export interface TxResult {
 	log: string,
 	gasWanted: string,
 	gasUsed: string,
-	events: Array<EventData>
+	events: Array<EventDatas>
 }
 
-export interface EventData {
+export interface EventDatas {
 type: string,
 attributes: Array<Event>
 }
