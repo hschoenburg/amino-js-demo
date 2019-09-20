@@ -94,6 +94,6 @@ function RegisterFormListeners (client: NameServiceClient) {
 window.onload = function() {
     RegisterFormListeners(client)
 
-  //TrySocket()
+  TrySocket()
 }
 

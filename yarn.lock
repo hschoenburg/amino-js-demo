@@ -861,7 +861,7 @@
 
 "@tendermint/amino-js@hschoenburg/amino-js#extend":
   version "0.4.4"
-  resolved "https://codeload.github.com/hschoenburg/amino-js/tar.gz/a75b707298e2c5c0aaf8146b452379c44252bc74"
+  resolved "https://codeload.github.com/hschoenburg/amino-js/tar.gz/fe3c423be88472506bb039a988e449c3f5358a93"
 
 "@tendermint/sig@jordansexton/sig":
   version "0.1.0"
