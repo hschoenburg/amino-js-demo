@@ -1,11 +1,29 @@
-
 export function TrySocket() {
 
-const url = 'ws://127.0.0.1:26657/subscribe'
-var exampleSocket = new WebSocket(url)
+const url = 'ws://127.0.0.1:26657/websocket'
+const socket = new WebSocket(url)
 
-exampleSocket.onopen = function (event) {
-  console.log('Connected')
-    exampleSocket.send("Here's some text that the server is urgently awaiting!"); 
-  };
+socket.onopen = () => {
+  console.log('socket open')
 }
+
+socket.onclose = () => {
+  console.log('socket closed')
+}
+
+socket.onmessage = (e) => {
+console.log(e.data)
+console.log("^^^^^^^^^^^^^^^^^^^^^^^^^ Message")
+}
+
+const subscribe = {
+     jsonrpc: `2.0`,
+     id: 78,
+     method: "subscribe", 
+     params: {
+			"query": "tm.event='NewBlock'"
+			}
+   }
+socket.send(JSON.stringify(subscribe));
+}
+

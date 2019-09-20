@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -18,6 +18,11 @@ module.exports = {
       filename: 'index.html'
     })
   ],
+  resolve: {
+    //modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    //extensions: ['.html', '.ts', '*', '']
+  },
+
   stats: { children: false },
   module: {
     rules: [

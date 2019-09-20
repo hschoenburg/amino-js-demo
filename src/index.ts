@@ -35,7 +35,7 @@ async function BuyNameHandler(e: Event): Promise<void> {
   const amount = elements[2].value
   
   const coin = { denom: denom, amount: amount }
-  const msg = utils.BuildBuyNameMsg(coin, name, "my Sdk Account Address")
+  //const msg = utils.BuildBuyNameMsg(coin, name, "my Sdk Account Address")
 
 }
 
@@ -94,6 +94,6 @@ function RegisterFormListeners (client: NameServiceClient) {
 window.onload = function() {
     RegisterFormListeners(client)
 
-  TrySocket()
+  //TrySocket()
 }
 
