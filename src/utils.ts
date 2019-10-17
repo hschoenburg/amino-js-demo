@@ -1,8 +1,7 @@
 import * as Amino from '@tendermint/amino-js'
-import * as cosmos from '../lib/types'
-import * as nameservice from './types'
+import * as sdk from "../lib/types"
 
-export function DecodeTx(txData: any): any {
+export function DecodeTx(txData: any): sdk.Tx {
   const bytes = Amino.base64ToBytes(txData);
   const value = Amino.unmarshalTx(bytes, true);
   return value
@@ -35,14 +34,18 @@ export interface MsgSend {
   //       }
 //       
 
-export function BuildBuyNameMsg(coin: cosmos.Coin, name: string, from: string): cosmos.Msg {
-	const msg = <nameservice.MsgBuyName>{
-    name: name,
-    bid: coin,
-    buyer: from,
+/*
+export function BuildBuyNameMsg(coin: sdk.Coin, name: string, from: string): sdk.MsgBuyName {
+	const msg = <sdk.MsgBuyName>{
 		type: "buy_name",
+    value: {
+      name: name,
+      Bid: [coin],
+      Buyer: from,
     }
-    return msg
+  }
+  return msg
 
 }
 
+*/

@@ -1,29 +1,39 @@
 import axios from 'axios';
 
-import { RPCTxQueryWithProofResponseJSON, Proof } from '../lib/types';
+import * as sdk from '../lib/types';
 
 import { DecodeTx } from './utils'
 
 
 export  class NameServiceClient {
 
-  async QueryWhois (name: string) {
+  async QueryWhois (name: string): Promise<any | sdk.ErrorResponse> {
     const data = await axios.get('/nameservice/names/' + name + '/whois')
     return data.data.result
   }
 
-  async QueryAccount (address: any) {
-    console.log('querying')
-    const data = await axios.get('/auth/accounts/' + address)
-    console.log(data)
-    return data.data.result
+  async QueryAccount (address: string): Promise<sdk.BaseAccount | sdk.ErrorResponse> {
+    const response = await axios.get('/auth/accounts/' + address)
+    if(response.data.error) {
+      return response.data.error
+    } else {
+    return response.data.result
+    }
   }
 
-  async QueryTx (hash: any) {
-    var data:RPCTxQueryWithProofResponseJSON = await axios.post('/rpc/tx?hash=' + '0x' + hash + '&prove=true')
-    const decodedTx = DecodeTx(data.result.tx)
-    return decodedTx
+  async QueryTx (hash: string): Promise<sdk.Tx | sdk.ErrorResponse> {
+    var response = await axios.post('/rpc/tx?hash=' + '0x' + hash + '&prove=true')
+    if(response.data.error) {
+      return response.data.error
+    } else {
+      return DecodeTx(response.data.result.tx)
+    }
   }
+
+  async MsgSend (msg: sdk.MsgSend): Promise<sdk.Tx | sdk.ErrorResponse | boolean > {
+    return true
+  }
+
 
   // returns a promise
   QueryResolveName (name: string) {}
