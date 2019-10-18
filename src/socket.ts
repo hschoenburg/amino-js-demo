@@ -1,3 +1,8 @@
+
+//ihttps://github.com/nomic-io/js-tendermint
+//use nomics js-tendermint
+
+
 export function TrySocket() {
 
 const url = 'ws://127.0.0.1:26657/websocket'

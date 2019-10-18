@@ -8,34 +8,34 @@ export function DecodeTx(txData: any): any {
   return value
   
 }
-/*
- export interface StdTx extends TxValue {
-     msg: Msg[];
-     fee: StdFee;
-     signatures: StdSignature[];
+
+ export interface StdTx extends cosmos.TxValue {
+     msg: cosmos.Msg[],
+     fee: cosmos.StdFee,
+     signatures: cosmos.StdSignature[],
      memo: string;
  }
-export interface Msg {
-    type: string;
-    value: MsgSend | MsgMultiSend;
-}
+
 
 export interface MsgSend {
     from_address: string;
     to_address: string;
-    amount: Coin[];
+    amount: cosmos.Coin[];
+}
 
-*/
 
-// MsgBuyName defines the BuyName message
-  // type MsgBuyName struct {
-  //   Name  string         `json:"name"`
-  //     Bid   sdk.Coins      `json:"bid"`
-  //       Buyer sdk.AccAddress `json:"buyer"`
-  //       }
-//       
+export function BuildMsgSend(from_address: string, to_address: string, amount: cosmos.Coin): cosmos.Msg {
+  return {
+          type: `cosmos-sdk/MsgSend`,
+          value: {
+                  from_address: from_address,
+                  to_address: to_address,
+                  amount: [amount],
+                }
+        }
+}
 
-export function BuildBuyNameMsg(coin: cosmos.Coin, name: string, from: string): cosmos.Msg {
+export function BuildMsgBuyName(coin: cosmos.Coin, name: string, from: string): cosmos.Msg {
 	const msg = <nameservice.MsgBuyName>{
     name: name,
     bid: coin,

@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+import Cosmos from '@lunie/cosmos-api'
+
+
 import { RPCTxQueryWithProofResponseJSON, Proof } from '../lib/types';
 
 import { DecodeTx } from './utils'
