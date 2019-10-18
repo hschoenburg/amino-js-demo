@@ -6,7 +6,7 @@
   "author": "hans@tendermint.com",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --progress --color --watch --display-error-details",
+    "start": "webpack-dev-server",
     "build": "webpack --progress --colors --display-error-details",
     "lint": "eslint --ext .ts,.js .",
     "test": "jest --config ./test/jest.config.json"

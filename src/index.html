@@ -81,5 +81,22 @@
       </form>
       <p id="BuyNameResult"></p>
     </div>
+
+    <div class="query-box">
+      <p>Use the form below to Send Coins to another address</p>
+      <form id="MsgSend" method="POST" , action="/">
+        <label for="to_address">Name</label>
+        <input name="to_address" type="text" />
+
+        <label for="denom">Coin denomination ('stake', 'nametoken')</label>
+        <input name="denom" type="text" />
+
+        <label for="amount">amount</label>
+        <input name="amount" type="number" />
+        <input type="submit" />
+      </form>
+      <p id="MsgSendResult"></p>
+    </div>
+  </body>
   </body>
 </html>
