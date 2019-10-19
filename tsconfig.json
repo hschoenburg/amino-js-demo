@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "plugins": [
+      { "name": "typescript-tslint-plugin" }
+    ],
     "outDir": "./dist/",
     "downlevelIteration": true,
     "noImplicitAny": true,
@@ -13,6 +16,5 @@
     "noImplicitReturns": true,
     "strict": true,
     "esModuleInterop": true,
-    //"noUnusedLocals": true,
-  }
+    "noUnusedLocals": true
 }

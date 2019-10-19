@@ -1,5 +1,5 @@
 import * as Amino from '@tendermint/amino-js'
-import * as cosmos from "../lib/types"
+import * as sdk from "../lib/types"
 
 export function DecodeTx(txData: any): sdk.Tx {
   const bytes = Amino.base64ToBytes(txData);
@@ -8,24 +8,16 @@ export function DecodeTx(txData: any): sdk.Tx {
   
 }
 
- export interface StdTx extends cosmos.TxValue {
-     msg: cosmos.Msg[],
-     fee: cosmos.StdFee,
-     signatures: cosmos.StdSignature[],
-     memo: string;
- }
-
-
 export interface MsgSend {
     from_address: string;
     to_address: string;
-    amount: cosmos.Coin[];
+    amount: sdk.Coin[];
 }
 
 
-export function BuildMsgSend(from_address: string, to_address: string, amount: cosmos.Coin): cosmos.Msg {
+export function BuildMsgSend(from_address: string, to_address: string, amount: sdk.Coin): sdk.Msg {
   return {
-          type: `cosmos-sdk/MsgSend`,
+          type: `sdk-sdk/MsgSend`,
           value: {
                   from_address: from_address,
                   to_address: to_address,
