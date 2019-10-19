@@ -1,0 +1,36 @@
+{
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "hash": "5FF36B7420CE18430A2D14694FA8D591F81430CD9BE7B5596E83F555BD358B09",
+    "height": "8677",
+    "index": 0,
+    "tx_result": {
+      "log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
+      "gasWanted": "200000",
+      "gasUsed": "16794",
+      "events": [
+        {
+          "type": "message",
+          "attributes": [
+            {
+              "key": "YWN0aW9u",
+              "value": "c2V0X25hbWU="
+            }
+          ]
+        }
+      ]
+    },
+    "tx": "ogEoKBapCirOtfFfCgRvb3BzEghoZWhlaGVoZRoUJAtQrZmt0ouhnpVeF9zAf4TyvNoSBBDAmgwaagom61rphyECsFeQdkDFT4iLE72TqDoKfD/Of2Xgtk/gWlXJJGlADmcSQCb3J85OJak8XorbIUlx7umocn3lCk52S3pfGgn7KBRsAahkcp1x6jqOdRw2bXnGyBNsPhn/AbFtEhhQFpqc9C8=",
+    "proof": {
+      "RootHash": "0023529DBFA347CF80C9E64D6D298FD31A0645D9A1FEE6C1227F7075BEE972B5",
+      "Data": "ogEoKBapCirOtfFfCgRvb3BzEghoZWhlaGVoZRoUJAtQrZmt0ouhnpVeF9zAf4TyvNoSBBDAmgwaagom61rphyECsFeQdkDFT4iLE72TqDoKfD/Of2Xgtk/gWlXJJGlADmcSQCb3J85OJak8XorbIUlx7umocn3lCk52S3pfGgn7KBRsAahkcp1x6jqOdRw2bXnGyBNsPhn/AbFtEhhQFpqc9C8=",
+      "Proof": {
+        "total": "1",
+        "index": "0",
+        "leaf_hash": "ACNSnb+jR8+AyeZNbSmP0xoGRdmh/ubBIn9wdb7pcrU=",
+        "aunts": []
+      }
+    }
+  }
+}

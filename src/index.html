@@ -13,23 +13,37 @@
   <body>
     <script src="http://localhost:8080/main.js"></script>
     <h1>Cosmos-JS Demo</h1>
-    <div id="WalletBox">
+
+    <!-- TODO HERE
+      open form with which to submit Mnemonic
+      createWalletFromMnemnoic()
+      registerFormListeners()
+
+      OR
+      generate Wallet. then fund it with the CLI
+    --->
+
+    <div id="query-box">
       <p id="WalletBoxStatus">No Wallet</p>
-      <input type="submit" id="GenerateWallet" value="Generate Wallet" />
-      <input
-        disabled="true"
-        type="submit"
-        id="QueryAccount"
-        value="Query Account Status"
-      />
-    </div>
-    <div id="Wallet">
-      <p id="Mnemonic"></p>
-      <p id="PubKey"></p>
-      <p id="PrivKey"></p>
-      <p id="Address"></p>
+      <input type="submit" id="CreateWalletButton" value="Create Wallet" />
+      <p id="CreateWalletResult"></p>
     </div>
 
+<div class="query-box">
+      <p>Use the form below to Send Coins to another address</p>
+      <form id="MsgSendForm" method="POST" , action="/">
+        <label for="to_address">To: Address</label>
+        <input name="to_address" type="text" />
+
+        <label for="denom">Coin denomination ('stake', 'nametoken')</label>
+        <input name="denom" type="text" />
+
+        <label for="amount">amount</label>
+        <input name="amount" type="number" />
+        <input type="submit" />
+      </form>
+      <p id="MsgSendResult"></p>
+    </div>
     <div class="query-box">
       <p>
         Use the form below to Query an Transaction Hash like this one
@@ -80,22 +94,6 @@
         <input type="submit" />
       </form>
       <p id="BuyNameResult"></p>
-    </div>
-
-    <div class="query-box">
-      <p>Use the form below to Send Coins to another address</p>
-      <form id="MsgSend" method="POST" , action="/">
-        <label for="to_address">Name</label>
-        <input name="to_address" type="text" />
-
-        <label for="denom">Coin denomination ('stake', 'nametoken')</label>
-        <input name="denom" type="text" />
-
-        <label for="amount">amount</label>
-        <input name="amount" type="number" />
-        <input type="submit" />
-      </form>
-      <p id="MsgSendResult"></p>
     </div>
   </body>
   </body>

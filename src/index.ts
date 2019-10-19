@@ -1,32 +1,14 @@
-import axios from 'axios'
-import * as sdk from '../lib/types'
-import { DecodeTx }  from './utils'
-import { TrySocket } from './socket'
-import * as handlers from './handlers'
+//import { TrySocket } from './socket'
+import * as handlers from "./handlers";
 
-/*
- * ok lets spec out this app. It should work for nameservice
- * Create a Wallet
- * Query Your Wallet Balance
- * Receive coins to this account
- e Buy a name -> with proof
+import { instantiate, API, Wallet } from "@tendermint/sig";
 
- *
- * Query your names
- * Update Your name
- * Send coins to address
- */
+// global vars for storing sig and wallet
 
-
-// import {encodeString, decodeString } from '@tendermint/amino-js'
-// import { marshalTx, unmarshalTx } from '@tendermint/amino-js';
-
-// placeholder var for local wallet
-
-
-window.onload = function() {
-    handlers.RegisterFormListeners()
+window.onload = async function() {
+  var api: API = await instantiate();
+  var wallet: Wallet | null = null;
+  handlers.RegisterWalletCreator(api, wallet);
 
   //TrySocket()
-}
-
+};

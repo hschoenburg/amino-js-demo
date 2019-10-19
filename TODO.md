@@ -25,7 +25,11 @@ AppendSignature
 SignWithKey
 
 
-Amino.encodeMsgSend? 
+
+
+RPC
+git@github.com:handshake-org/faucet-tool.git
+and nomic-io/tendermint-js
 
 
 
