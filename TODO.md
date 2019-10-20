@@ -1,48 +1,34 @@
-pseudocode plan for MSgSend
+# ToDo
 
 
-CreateSignMsg
+1. Add form for submitting Mnemonic to instantiate wallet.
 
-SignSignMsg
+2. insert client.QueryAccount into Cosmos.SendMessage
 
-CreateStdTx - with Msgs and Signature
+3. sig.signTx and sig.Verify(tx)
 
+4. BroadcasTx, verifyTxInclusion
 
-Fees and gs 
-memo
-simulate creates gas estimate?
-
-
-Class Tx
-generateSignMsg
-
-default Gas and Fees
-- Simulate - to give me proper Gas and Fees?
-
-Can I encode it to skip a round trip step?
-AddMsg
-AppendSignature
-SignWithKey
+5. RPC TrySocket (tendermin-js) ?
 
 
 
 
-RPC
-git@github.com:handshake-org/faucet-tool.git
+Can I encode the Tx to skip a round trip step?
+
+
+
+
+# RPC
 and nomic-io/tendermint-js
-
-
-
-
-
-
-
-
-
+FIrefox WebSocket inpsector
+https://hacks.mozilla.org/2019/10/firefoxs-new-websocket-inspector/
 possibly incorporate https://github.com/nomic-io/js-tendermint
 
 
-The 5 libs
+
+
+# The 5 libs
 
 sig - crypto features
 types - SDK, Tendermint, RPC, REST JSON structs --- extensible with typegen?
@@ -52,29 +38,11 @@ demo-app - shows how to use client lib
 tendermint-js -- incorporate into cosmos-api?
 
 
-- Use types from jordansexton/sig?
-
 - decode and verify tx proof
 - Msg proof?
-- Build, sign and broadcast Tx
-- Verify Tx sig?
 
 
-Library for building and signing Messages
-
-
-CreateSignMsg
-
-type StdSignMsg struct {
-  ChainID       string      `json:"chain_id"`
-  AccountNumber uint64      `json:"account_number"`
-  Sequence      uint64      `json:"sequence"`
-  Fee           auth.StdFee `json:"fee"`
-  Msgs          []sdk.Msg   `json:"msgs"`
-  Memo          string      `json:"memo"`
-}
-FIrefox WebSocket inpsector
-https://hacks.mozilla.org/2019/10/firefoxs-new-websocket-inspector/
-
+How to handle secrets in the browser?
+git@github.com:handshake-org/faucet-tool.git
 
 Missing WhoIs type
