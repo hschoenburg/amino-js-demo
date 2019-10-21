@@ -30,3 +30,5 @@ export type StdSignMsg = {
   msgs: [sdk.Msg];
   memo: string;
 };
+
+export type Bech32AccAddress = string

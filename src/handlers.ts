@@ -128,8 +128,19 @@ export function MsgSendHandler(
       amount: [{ amount: amount, denom: denom }]
     };
 
+    /*
+     * pseudo code example */
+
+    let msg = new Msg('cosmos-sdk/MsgSend')
+
+    msg.Build(data)
+    Tx.AddMsg(msg)
+
+    Tx.appendSignature(sig.sign(Tx.createSignMessage()))
+
+    let hash = Client.BroadcastTx(Tx)
+
     let cosmos = new Cosmos(api, wallet);
-    let response = await cosmos.SendMessage(msg);
 
     let resultPrompt = document.getElementById("MsgSendResult");
     if (resultPrompt) {

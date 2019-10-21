@@ -1,0 +1,13 @@
+import * as sdk from "../lib/types";
+
+
+export class Msg {
+
+constructor() {
+
+}
+
+
+
+
+}
