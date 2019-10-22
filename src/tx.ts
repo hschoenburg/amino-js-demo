@@ -5,43 +5,32 @@ export const DEFAULT_GAS_PRICE = [
 ];
 export const DEFAULT_GAS_AMOUNT = "0";
 
-export class Tx {
-  chain_id: string;
-  account_number: number;
-  sequence: number;
-  signature: sdk.StdSignature | null;
-  msgs: Array<sdk.Msg>;
-  memo: string = "";
-  fee: sdk.StdFee;
+export function TxBuilder(params: sdk.TxBuilderParams): sdk.TxBuilder {
 
-  constructor(params: {
-    sequence: number;
-    account_number: number;
-    chain_id: string;
-  }) {
-    this.account_number = params.account_number;
-    this.sequence = params.sequence;
-    this.chain_id = params.chain_id;
-    this.signature = null;
-    this.fee = { amount: DEFAULT_GAS_PRICE, gas: "0" };
-    this.msgs = [];
-  }
+  let TxParams = params
+  //let signature: sdk.StdSignature | null = null
+  let msgs: Array<sdk.Msg> = []
+  let memo: string = "";
+  let fee: sdk.StdFee = { amount: DEFAULT_GAS_PRICE, gas: "0" };
 
-  CreateSignMessage(): string {
-    let sig_msg = <sdk.StdSignMsg>{
-      chain_id: this.chain_id,
-      account_number: this.account_number,
-      sequence: this.sequence,
-      fee: this.fee,
-      msgs: this.msgs,
-      memo: this.memo
-    };
-    return JSON.stringify(sig_msg);
-  }
+  return {
 
-  AddMsg(msg: sdk.Msg): boolean {
-    this.msgs.push(msg);
-    return true;
+    CreateSignMessage: function():  string  {
+      let sig_msg = <sdk.StdSignMsg>{
+        chain_id: TxParams.chain_id,
+        account_number: TxParams.account_number,
+        sequence: TxParams.sequence,
+        fee: fee,
+        msgs: msgs,
+        memo: memo
+      };
+      return JSON.stringify(sig_msg);
+    },
+
+    AddMsg: function(msg: sdk.Msg): boolean  {
+      msgs.push(msg);
+      return true;
+    }
   }
 }
 

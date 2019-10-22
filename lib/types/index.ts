@@ -10,6 +10,17 @@ export interface ErrorResponse {
   message: string;
 }
 
+export interface TxBuilderParams {
+  sequence: number;
+  account_number: number;
+  chain_id: string;
+}
+
+export interface TxBuilder {
+  CreateSignMessage(): string;
+  AddMsg(msg: sdk.Msg): boolean;
+}
+
 export type MsgBuyName = {
   type: "buy_name";
   value: {
