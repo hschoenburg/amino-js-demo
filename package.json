@@ -17,7 +17,7 @@
     "@tendermint/amino-js": "hschoenburg/amino-js#extend",
     "@tendermint/sig": "https://github.com/hschoenburg/sig",
     "@types/bech32": "^1.1.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
     "js-cosmos-wallet": "^0.0.4",
     "tslint": "^5.20.0",
